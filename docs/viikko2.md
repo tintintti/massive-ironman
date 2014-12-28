@@ -1,1 +1,4 @@
  
+Toisella viikolla testailin robotin liikkumista ja ultraäänisensorin ja kosketussensorin toimintaa. Kokosin aluksi robon, joka liikkui pyörillä ja jolla oli ultraääni-, kosketus- ja valosensori. Myöhemmin lisäsin siihen vielä “leuat” jotka toimivat yhdellä moottorilla. Toteutin robotin, joka liikkuu mustalla teipillä rajatulla alueella ja huomatessaan jotain ultraäänisensorilla lähtee eteenpäin kovempaa. Jos robotti osuu johonkin, leuat menevät kiinni ja auki ja jos robotti tulee alueen rajalle, se kääntyy 90 astetta ja jatkaa matkaansa. Ongelmina on esiintynyt, että joskus robotti menee vahingossa rajan yli jos se sopivasti rajan kohdalla huomaa jotain.
+Ensi viikolla mietin miten robottia voisi parantaa ja koitan saada sen pitämään ääntä kun se lähtee hyökkäämään tunkeutujan kimppuun.
+videota: https://www.dropbox.com/s/3k8y0grydlmr0mh/robo.mp4?dl=0
