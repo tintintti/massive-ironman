@@ -1,6 +1,8 @@
 package vahtirobo.behavior;
 
 
+import java.io.File;
+
 import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
@@ -11,10 +13,12 @@ public class Charge implements Behavior {
 	private DifferentialPilot pilot;
 	private UltrasonicSensor sonic;
 	private boolean suppressed;
+	private File cry;
 	
 	public Charge(DifferentialPilot pilot, UltrasonicSensor sonic) {
 		this.pilot = pilot;
 		this.sonic = sonic;
+		this.cry = new File("paras2.wav");
 	}
 
 	@Override
@@ -22,6 +26,7 @@ public class Charge implements Behavior {
 		this.suppressed = false;
 		
 		pilot.setTravelSpeed(20);
+		Sound.playSample(this.cry);
 		pilot.forward();
 		
 		while (!suppressed) {
