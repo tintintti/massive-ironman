@@ -18,20 +18,30 @@ public class HeardSomething implements Behavior {
 	public void action() {
 		this.suppressed = false;
 		
+		this.turnRight();
+		
+		this.turnLeft();
+
+		this.turnRight();
+		
+	}
+	
+	private void turnRight() {
 		int turns = 0;
 		
 		while (!suppressed && turns <= 20) {
 			pilot.rotate(5);
 			turns++;
 		}
-		
-		turns = 0;
+	}
+	
+	private void turnLeft() {
+		int turns = 0;
 		
 		while (!suppressed && turns <= 40) {
 			pilot.rotate(-5);
 			turns++;
 		}
-		
 	}
 
 	@Override
@@ -41,7 +51,7 @@ public class HeardSomething implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return this.sound.readValue() > 50;
+		return this.sound.readValue() > 60;
 	}
 	
 
