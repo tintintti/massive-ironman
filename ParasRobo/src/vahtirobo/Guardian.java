@@ -26,7 +26,6 @@ public class Guardian extends Thread {
 		Behavior charge = new Charge(pilot, sonic);
 		Behavior attack = new Attack(pilot, touch);
 		Behavior turn = new Turn(pilot, light, border);
-//		AbortMission abort = new AbortMission();
 		
 		Behavior[] behaviorList = {drive, charge, turn, attack};
 		
