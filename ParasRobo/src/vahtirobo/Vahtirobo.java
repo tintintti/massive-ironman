@@ -16,7 +16,14 @@ public class Vahtirobo {
 
 		Guardian paras = new Guardian(pilot, sonic, touch, light, 45);
 		
-		paras.run();
+		paras.start();
+		
+		while (true) {
+			
+			if (Button.ENTER.isPressed()) {
+				System.exit(0);
+			}
+		}
 		
 	}
 }

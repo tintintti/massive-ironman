@@ -20,11 +20,12 @@ public class Turn implements Behavior {
 	@Override
 	public void action() {
 		this.suppressed = false;
-		pilot.travel(-5);
-		pilot.rotate(90);
-		while (!suppressed && pilot.isMoving()) {
-			Thread.yield();
+		pilot.travel(-10);
+		if (suppressed) {
+			return;
 		}
+		pilot.rotate(120);
+		
 	}
 
 	@Override

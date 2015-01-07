@@ -25,6 +25,7 @@ public class Charge implements Behavior {
 	public void action() {
 		this.suppressed = false;
 		
+
 		pilot.setTravelSpeed(20);
 		Sound.playSample(this.cry);
 		pilot.forward();
@@ -44,7 +45,7 @@ public class Charge implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return sonic.getDistance() < 40;
+		return sonic.getDistance() < 60;
 	}
 
 }

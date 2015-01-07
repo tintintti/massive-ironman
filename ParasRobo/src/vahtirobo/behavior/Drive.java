@@ -19,7 +19,6 @@ public class Drive implements Behavior{
 		pilot.setTravelSpeed(10);
 		pilot.forward();
 		
-// liikkuu eteenpäin niin kauan kunnes joku toinen behavior ottaa hallinnan
 		while (!suppressed) {
 			Thread.yield();
 		}

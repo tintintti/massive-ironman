@@ -5,7 +5,7 @@ import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
 
-public class Guardian {
+public class Guardian extends Thread {
 	
 	private DifferentialPilot pilot;
 	private UltrasonicSensor sonic;
@@ -25,14 +25,15 @@ public class Guardian {
 		Behavior drive = new Drive(pilot);
 		Behavior charge = new Charge(pilot, sonic);
 		Behavior attack = new Attack(pilot, touch);
-		Behavior abort = new AbortMission();
 		Behavior turn = new Turn(pilot, light, border);
+//		AbortMission abort = new AbortMission();
 		
-		Behavior[] behaviorList = {drive, charge, turn, attack, abort};
+		Behavior[] behaviorList = {drive, charge, turn, attack};
 		
-		Arbitrator arby = new Arbitrator(behaviorList);
+		Arbitrator arbitrator = new Arbitrator(behaviorList);
 		
-		arby.start();
+		arbitrator.start();
+		
 	}
 
 }

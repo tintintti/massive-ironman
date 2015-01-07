@@ -8,7 +8,6 @@ public class Attack implements Behavior {
 	
 	private DifferentialPilot pilot;
 	private TouchSensor touch;
-	private boolean suppressed;
 	
 	public Attack(DifferentialPilot pilot, TouchSensor touch) {
 		this.pilot = pilot;
@@ -17,24 +16,18 @@ public class Attack implements Behavior {
 
 	@Override
 	public void action() {
-		this.suppressed = false;
 		
-		boolean attackOver = false;
 		pilot.stop();
+		
 		Motor.C.rotate(45);
 		Motor.C.rotate(-45);
-		pilot.travel(-5);
-		attackOver = true;
 		
-		while (!suppressed && !attackOver) {
-			Thread.yield();
-		}
+		pilot.travel(-5);
 		
 	}
 
 	@Override
 	public void suppress() {
-		this.suppressed = true;
 	}
 
 	@Override
