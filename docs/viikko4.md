@@ -1,4 +1,4 @@
- Viimeisellä viikolla korjasin ainakin hätäpysäytyksen ja lisäsin robotiin vielä ominaisuuden, että se ottaa  valoarvot reviirin ja reviirin rajan kohdalta ennen kuin robotti lähtee partioimaan. 
+ Viimeisellä viikolla korjasin ainakin hätäpysäytyksen. Lisätty äänisensori, ja jos robotti kuulee kovan äänen, se alkaa kääntyä ja katsoa ympärilleen hetkeksi. Lisäsin robotiin vielä ominaisuuden, että se ottaa  valoarvot reviirin ja reviirin rajan kohdalta ennen kuin robotti lähtee partioimaan. 
 Nyt robottia voi käyttää erilaisilla pinnoilla sekä vaalean pohjan ja tummien rajojen lisäksi tummalla pohjalla ja vaaleilla rajoilla.
 Siistin koodia ja lisäilin kommentteja yms.
 Tein dokumentoinnin ja lisää testailua.
