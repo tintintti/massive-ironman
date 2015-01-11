@@ -3,6 +3,10 @@ package vahtirobo.behavior;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
 
+/**
+ * Drives forward until some other behavior takes control.
+ */
+
 public class Drive implements Behavior{
 	
 	private DifferentialPilot pilot;
@@ -19,7 +23,6 @@ public class Drive implements Behavior{
 		pilot.setTravelSpeed(10);
 		pilot.forward();
 		
-// liikkuu eteenpäin niin kauan kunnes joku toinen behavior ottaa hallinnan
 		while (!suppressed) {
 			Thread.yield();
 		}
