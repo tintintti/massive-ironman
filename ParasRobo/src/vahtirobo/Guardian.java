@@ -5,6 +5,10 @@ import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
 
+/**
+ * Creates the behaviors and starts the arbitrator.
+ */
+
 public class Guardian extends Thread {
 	
 	private DifferentialPilot pilot;
@@ -12,30 +16,41 @@ public class Guardian extends Thread {
 	private LightSensor light;
 	private TouchSensor touch;
 	private SoundSensor sound;
-	private int border;
+	private int borderLightValue;
+	private boolean backgroundIsLight;
 	
-	public Guardian(int border) {
-		this.pilot = new DifferentialPilot(5.6f, 17f, Motor.A, Motor.B);
-		this.light = new LightSensor(SensorPort.S1);
-		this.sound = new SoundSensor(SensorPort.S2);
-		this.touch = new TouchSensor(SensorPort.S3);
-		this.sonic = new UltrasonicSensor(SensorPort.S4);
-		this.border = border;
+	public Guardian(DifferentialPilot p, LightSensor l, SoundSensor s, TouchSensor t, UltrasonicSensor u ) {
+		this.pilot = p;
+		this.light = l;
+		this.sound = s;
+		this.touch = t;
+		this.sonic = u;
 	}
 	
 	public void run() {
+		
 		Behavior drive = new Drive(pilot);
 		Behavior charge = new Charge(pilot, sonic);
 		Behavior attack = new Attack(pilot, touch);
-		Behavior turn = new Turn(pilot, light, border);
+		Behavior turn = new Turn(pilot, light, borderLightValue, backgroundIsLight);
 		Behavior listen = new HeardSomething(sound, pilot);
 		
 		Behavior[] behaviorList = {drive, listen, charge, turn, attack};
 		
 		Arbitrator arbitrator = new Arbitrator(behaviorList);
 		
+		System.out.println("GET OFF MY LAWN!");
+		
 		arbitrator.start();
 		
+	}
+	
+	public void setBackgroundIsLight(boolean isLight) {
+		this.backgroundIsLight = isLight;
+	}
+	
+	public void setBorderLightValue(int value) {
+		this.borderLightValue = value;
 	}
 
 }

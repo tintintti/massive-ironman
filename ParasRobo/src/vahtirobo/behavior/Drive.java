@@ -3,6 +3,10 @@ package vahtirobo.behavior;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
 
+/**
+ * Drives forward until some other behavior takes control.
+ */
+
 public class Drive implements Behavior{
 	
 	private DifferentialPilot pilot;

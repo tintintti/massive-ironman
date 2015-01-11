@@ -4,6 +4,11 @@ import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
 
+/**
+ * If the touch sensor is pressed, rotates the motor that controls the robot's claws so that
+ * the robot claws whatever hit the touch sensor.
+ */
+
 public class Attack implements Behavior {
 	
 	private DifferentialPilot pilot;

@@ -7,6 +7,9 @@ import lejos.nxt.*;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.*;
 
+/**
+ * If the ultrasonic sensor detects something nearer than ~60cm the robot charges forward.
+ */
 
 public class Charge implements Behavior {
 	
@@ -45,6 +48,7 @@ public class Charge implements Behavior {
 
 	@Override
 	public boolean takeControl() {
+		
 		return sonic.getDistance() < 60;
 	}
 

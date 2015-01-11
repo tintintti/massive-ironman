@@ -4,16 +4,22 @@ import lejos.nxt.LightSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.Behavior;
 
+/**
+ * Turns the robot around about 120 degrees when the light sensor detects the border.
+ */
+
 public class Turn implements Behavior {
 	
 	private DifferentialPilot pilot;
 	private LightSensor light;
-	private int border;
+	private int borderLightValue;
+	private boolean borderIsDarkerThanTerritory;
 	
-	public Turn(DifferentialPilot pilot, LightSensor light, int border) {
+	public Turn(DifferentialPilot pilot, LightSensor light, int border, boolean borderIsDarkerThanTerritory) {
 		this.pilot = pilot;
 		this.light = light;
-		this.border = border;
+		this.borderLightValue = border;
+		this.borderIsDarkerThanTerritory = borderIsDarkerThanTerritory;
 	}
 
 	@Override
@@ -29,7 +35,14 @@ public class Turn implements Behavior {
 
 	@Override
 	public boolean takeControl() {
-		return light.getLightValue() < border;
+		
+		if (borderIsDarkerThanTerritory) {
+			return light.getLightValue() < borderLightValue;
+		}
+		
+		return light.getLightValue() > borderLightValue;
+		
 	}
 
+	
 }

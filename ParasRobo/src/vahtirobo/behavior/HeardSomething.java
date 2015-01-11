@@ -4,6 +4,11 @@ import lejos.nxt.SoundSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.robotics.subsumption.Behavior;
 
+/**
+ * If the sound sensor picks up a loud noise, the robot starts turning first right and then left, and then back
+ * to where it started unless it's suppressed.
+ */
+
 public class HeardSomething implements Behavior {
 	private SoundSensor sound;
 	private DifferentialPilot pilot;
